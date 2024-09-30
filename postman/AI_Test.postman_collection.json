@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "788d10fe-c89f-414d-970b-391befd6eaa6",
+		"name": "AI_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3129584"
+	},
+	"item": [
+		{
+			"name": "簡單Chat測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/chatSimpleTest?message=你好，我叫Gary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"chatSimpleTest"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "你好，我叫Gary"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "簡單Chat測試_Streaming",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/chatStreamingTest?message=請用中文說個笑話",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"chatStreamingTest"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "請用中文說個笑話"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat_AI_助理測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/chatAssistantTest?topic=熱血青年&lines=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"chatAssistantTest"
+					],
+					"query": [
+						{
+							"key": "topic",
+							"value": "熱血青年"
+						},
+						{
+							"key": "lines",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat_AI_記憶測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/chatMemoryTest?memoryId=1&message=你好，我叫做Gary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"chatMemoryTest"
+					],
+					"query": [
+						{
+							"key": "memoryId",
+							"value": "1"
+						},
+						{
+							"key": "message",
+							"value": "你好，我叫做Gary"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "檔案更新資料庫",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/insertDocFiles?fileDirPath=D:/doc/webcomm&company=webcomm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"insertDocFiles"
+					],
+					"query": [
+						{
+							"key": "fileDirPath",
+							"value": "D:/doc/webcomm"
+						},
+						{
+							"key": "company",
+							"value": "webcomm"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Easy_Rag測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/easyRagTest?memoryId=6&message=請介紹你自己",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"easyRagTest"
+					],
+					"query": [
+						{
+							"key": "memoryId",
+							"value": "6"
+						},
+						{
+							"key": "message",
+							"value": "請介紹你自己"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TCB測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/tcbRagTest?memoryId=3&message=第三項計算結果是27?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"tcbRagTest"
+					],
+					"query": [
+						{
+							"key": "memoryId",
+							"value": "3"
+						},
+						{
+							"key": "message",
+							"value": "第三項計算結果是27?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SCB測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/scbRagTest?memoryId=4&message=帳戶交易的收費標準?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"scbRagTest"
+					],
+					"query": [
+						{
+							"key": "memoryId",
+							"value": "4"
+						},
+						{
+							"key": "message",
+							"value": "帳戶交易的收費標準?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "簡單Code Chat測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/codeChatTest?message=使用 spring security 設定 csrf 如何讓 angualr 呼叫 api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"codeChatTest"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "使用 spring security 設定 csrf 如何讓 angualr 呼叫 api"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
