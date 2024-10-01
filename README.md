@@ -24,7 +24,7 @@ LLM project
 
 安裝 Milvus
 - Milvus 安裝: [連結](https://www.milvus-io.com/getstarted/standalone/install_standalone-docker)
-- 
+
 ## 開發環境
 * OpenJDK 17
 * Ollama latest
