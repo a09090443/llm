@@ -13,6 +13,7 @@ LLM project
 * [x] [Rag](http://#)
 * [x] [Tools](http://#)
 3. Rag  測試範例以"合作金庫"與"渣打銀行"公開資料為例
+4. 使用 SystemMessage 定義角色，並只回答特定領域問題，以CodeAssistant為例
 
 ## 事前準備
 安裝 Ollama 並下載 LLM models
