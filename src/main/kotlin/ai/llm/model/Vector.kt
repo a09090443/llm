@@ -5,7 +5,6 @@ import io.quarkus.runtime.annotations.ConfigGroup
 import io.smallrye.config.ConfigMapping
 import io.smallrye.config.WithDefault
 import io.smallrye.config.WithParentName
-import java.util.*
 
 @ConfigMapping(prefix = "vector")
 interface Vector {
