@@ -8,12 +8,17 @@ import ai.llm.assistant.SCBAssistant
 import ai.llm.assistant.TcbAssistant
 import ai.llm.enums.Company
 import ai.llm.util.logger
+import dev.langchain4j.agent.tool.ToolSpecifications
 import dev.langchain4j.data.document.loader.FileSystemDocumentLoader.loadDocuments
 import dev.langchain4j.data.document.parser.apache.tika.ApacheTikaDocumentParser
 import dev.langchain4j.data.document.splitter.DocumentSplitters
 import dev.langchain4j.data.embedding.Embedding
 import dev.langchain4j.data.image.Image
 import dev.langchain4j.data.message.AiMessage
+import dev.langchain4j.data.message.ChatMessage
+import dev.langchain4j.data.message.SystemMessage
+import dev.langchain4j.data.message.ToolExecutionResultMessage
+import dev.langchain4j.data.message.UserMessage
 import dev.langchain4j.data.segment.TextSegment
 import dev.langchain4j.model.StreamingResponseHandler
 import dev.langchain4j.model.chat.ChatLanguageModel
@@ -23,6 +28,8 @@ import dev.langchain4j.model.image.ImageModel
 import dev.langchain4j.model.output.Response
 import dev.langchain4j.store.embedding.EmbeddingStore
 import dev.langchain4j.store.embedding.milvus.MilvusEmbeddingStore
+import dev.langchain4j.web.search.WebSearchEngine
+import dev.langchain4j.web.search.WebSearchTool
 import io.quarkiverse.langchain4j.ModelName
 import io.quarkus.mailer.Mail
 import io.quarkus.mailer.Mailer
@@ -38,10 +45,13 @@ import jakarta.ws.rs.Produces
 import jakarta.ws.rs.core.MediaType
 import org.jboss.resteasy.reactive.RestQuery
 import org.jboss.resteasy.reactive.RestStreamElementType
+import org.testcontainers.shaded.org.hamcrest.MatcherAssert.assertThat
 import java.io.File
+
 
 @Path("/ai")
 class AIResource(
+    var chatModel: ChatLanguageModel,
     @ModelName("test") var ollamaModel: ChatLanguageModel,
     @ModelName("image") var openAiImageModel: ImageModel,
     @ModelName("test") var ollamaStreamingModel: StreamingChatLanguageModel,
@@ -50,6 +60,7 @@ class AIResource(
     @Named("milvus") private val milvusStore: MilvusEmbeddingStore,
     @Named("tcbMilvus") private val tcbMilvusStore: MilvusEmbeddingStore,
     @Named("scbMilvus") private val scbMilvusStore: MilvusEmbeddingStore,
+    @Named("googleEngine") private val googleEngine: WebSearchEngine,
     var poemWriter: PoemWriter,
     var aiAssistant: AIAssistant,
     var garyProfileAssistant: GaryProfileAssistant,
@@ -154,10 +165,39 @@ class AIResource(
     }
 
     @GET
+    @Path("/webSearchTest")
+    fun webSearchTest(@RestQuery message: String): String {
+
+        val webSearchTool = WebSearchTool.from(googleEngine)
+        val tools = ToolSpecifications.toolSpecificationsFrom(webSearchTool)
+        val messages: MutableList<ChatMessage> = ArrayList()
+        val systemMessage: SystemMessage =
+            SystemMessage.from("你是一位非常了解台灣的專家，會回答關於台灣的相關知識")
+        messages.add(systemMessage)
+        val userMessage: UserMessage = UserMessage.from(message)
+        messages.add(userMessage)
+
+        // when
+        val aiMessage: AiMessage = chatModel.generate(messages, tools).content()
+
+        messages.add(aiMessage)
+
+        // when
+        val strResult = webSearchTool.searchWeb(message)
+        val toolExecutionResultMessage =
+            ToolExecutionResultMessage.from(aiMessage.toolExecutionRequests()[0], strResult)
+        messages.add(toolExecutionResultMessage)
+
+        val finalResponse: AiMessage = chatModel.generate(messages).content()
+        return finalResponse.text()
+    }
+
+    @GET
     @Path("/mailTest")
-    fun mailTest(){
+    fun mailTest() {
         mailer.send(
-            Mail.withText("zipe.daden@gmail.com",
+            Mail.withText(
+                "zipe.daden@gmail.com",
                 "Ahoy from Quarkus",
                 "A simple email sent from a Quarkus application."
             )

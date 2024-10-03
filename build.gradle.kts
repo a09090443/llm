@@ -23,11 +23,11 @@ dependencies {
     implementation("io.quarkus:quarkus-kotlin")
     implementation("io.quarkus:quarkus-mailer")
 
-    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-openai:0.19.0")
-    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-ollama:0.19.0")
-//    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-chroma:0.19.0")
-//    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-milvus:0.19.0")
-//    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-easy-rag:0.19.0")
+    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-openai:0.20.1")
+    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-ollama:0.20.1")
+//    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-chroma:0.20.1")
+//    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-milvus:0.20.1")
+//    implementation("io.quarkiverse.langchain4j:quarkus-langchain4j-easy-rag:0.20.1")
 
     implementation("dev.langchain4j:langchain4j-easy-rag:0.35.0")
     implementation("dev.langchain4j:langchain4j-chroma:0.35.0")
@@ -36,6 +36,8 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.7.3")
+
+    runtimeOnly("io.grpc:grpc-census:1.65.1")
 
     testImplementation("org.assertj:assertj-core:3.26.3")
     testImplementation("io.quarkus:quarkus-junit5")

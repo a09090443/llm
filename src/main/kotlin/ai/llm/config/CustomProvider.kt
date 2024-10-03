@@ -5,7 +5,6 @@ import dev.langchain4j.memory.chat.MessageWindowChatMemory
 import dev.langchain4j.store.memory.chat.InMemoryChatMemoryStore
 import java.util.function.Supplier
 
-
 class CustomProvider : Supplier<ChatMemoryProvider?> {
     private val store = InMemoryChatMemoryStore()
 

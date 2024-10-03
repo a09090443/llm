@@ -163,44 +163,6 @@
 			"response": []
 		},
 		{
-			"name": "檔案更新資料庫",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost/ai/insertDocFiles?fileDirPath=D:/doc/webcomm&company=webcomm",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"ai",
-						"insertDocFiles"
-					],
-					"query": [
-						{
-							"key": "fileDirPath",
-							"value": "D:/doc/webcomm"
-						},
-						{
-							"key": "company",
-							"value": "webcomm"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Easy_Rag測試",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -235,6 +197,44 @@
 						{
 							"key": "message",
 							"value": "請介紹你自己"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "檔案更新資料庫",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/insertDocFiles?fileDirPath=D:/doc/webcomm&company=webcomm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"insertDocFiles"
+					],
+					"query": [
+						{
+							"key": "fileDirPath",
+							"value": "D:/doc/webcomm"
+						},
+						{
+							"key": "company",
+							"value": "webcomm"
 						}
 					]
 				}
@@ -341,7 +341,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/ai/codeChatTest?message=使用 spring security 設定 csrf 如何讓 angualr 呼叫 api",
+					"raw": "http://localhost/ai/codeChatTest?message=如何做麻婆豆腐?",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -353,7 +353,44 @@
 					"query": [
 						{
 							"key": "message",
-							"value": "使用 spring security 設定 csrf 如何讓 angualr 呼叫 api"
+							"value": "如何做麻婆豆腐?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Web_Search測試",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/ai/webSearchTest?message=台灣哪個縣市最多人?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ai",
+						"webSearchTest"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "台灣哪個縣市最多人?"
 						}
 					]
 				}
